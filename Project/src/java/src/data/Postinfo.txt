@@ -1,0 +1,24 @@
+
+ PreparedStatement ps2= con.prepareStatement("select genre,sub_genre,post_title,Content from post");
+                    ResultSet rs2=ps2.executeQuery();
+                    out.println("high");
+                    request.setAttribute("THE RESULT SET",(ResultSet)rs2);
+
+
+<%
+    ResultSet rs=(ResultSet)request.getAttribute("THE RESULT SET");
+    while(rs.next())
+    {String title=rs.getString("post_title");
+    String genre=rs.getString("genre");
+    String sub_genre=rs.getString("sub_genre");
+    String content=rs.getString("Content");
+      out.println("<div class='container'>");
+out.println("<h2>TITLE: "+title+"</h2>");
+out.println("<h3>Genre: "+genre+"<h3>");
+out.println("<h3>Sub_Genre: "+sub_genre+"</h3>");
+out.println("<h2>CONTENT: </h2>");
+out.println("<h3>"+content+"</h3>");
+out.println("<hr><br>");
+}
+
+%>
